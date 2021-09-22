@@ -1,20 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   
-    <!-- CSS -->
-    <link rel="stylesheet" href="css/style.css">
+{{-- @dd --> untuk melihat isi dari varibel, array / pengganti vardump() --}}
+{{-- @dd($posts) --}}
 
-    <title>Luxury Blog | Posts</title>
-</head>
-<body>
-    <h1>Halaman Posts</h1>
+@extends('layouts.main')
 
-    <!-- JAVASCRIPT -->
-   
-    
-</body>
-</html>
+@section('container')
+    {{-- looping isi dari array--}}
+    @foreach ($posts as $post)
+    <article class="mb-5">
+        <h2>
+            <a href="/posts/{{ $post["slug"] }}">{{ $post["title"] }}</a>
+        </h2>
+        <h5>By: {{ $post["author"] }}</h5>
+        <p>{{ $post["body"] }}</p>
+    </article>
+    @endforeach
+@endsection
+
+
